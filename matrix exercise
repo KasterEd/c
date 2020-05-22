@@ -1,0 +1,56 @@
+#include <stdio.h>
+int main(){
+	setvbuf(stdout, NULL, _IONBF, 0);
+	int n;
+	printf("enter the dimension of the matrix\n");//obtain the value n for the number of dimension
+ 	scanf("%i",&n);
+	int a[n][n];//declaring variables
+	int b[n][n];
+	int c[n][n];
+
+
+	printf("enter the elements of the matrixA\n");
+
+	int i,j,eA,eB;//for initiating a loop and the elements in each loop
+
+	for(i = 0; i < n ; i++){
+		for(j = 0 ;j < n ;j++ ){
+			scanf("%i",&eA);//read the element and initialize the matrixA
+				a[i][j] = eA;
+			}
+		}
+
+	printf("enter the elements of the matrixB\n");
+
+	for(i = 0; i < n ; i++){
+			for(j = 0 ;j < n ;j++ ){
+				scanf("%i",&eB);//read the element and initialize the matrixB
+					b[i][j] = eB;
+				}
+			}
+
+	int k, sum=0;
+	for(i = 0; i < n; i++){
+		for(j = 0; j < n; j++){
+			for(k = 0; k < n; k++){
+//we need additional variable to control and the 
+//multiplication of each matrix's row and column
+				sum = sum + a[i][k]*b[k][j]; 
+// the summation of multiplication result can 
+//give us the single element of matrixes product
+			}
+			c[i][j] = sum;
+// after getting the element of product we initialize it to the matrix of c
+			sum = 0;
+//after the initialization we clear the 
+//value of summation and start the next element
+			printf("%4i",c[i][j]);
+// finishing one column we print out the value for each
+		}
+		printf("\n");
+// create a new line for next row
+	}
+
+
+
+	return 0;

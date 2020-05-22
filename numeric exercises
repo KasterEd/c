@@ -1,0 +1,153 @@
+//approximate natural number by given pricison
+
+#include<stdio.h>
+
+int main() {
+	setvbuf(stdout, NULL, _IONBF, 0);
+	
+	int k;// the integer need to input
+	float sum = 1, factorial = 1;
+
+	int i = 1;
+
+	do {
+
+		printf("Enter an integer\n");//the operation will compute over and over again
+		scanf("%d", &k);
+
+		while (i < k) {//limitation for integer computing factorial
+			factorial *= i;//the needed opeation for factorial
+			sum += (1 / (float)factorial);// operation for adding the series
+			i++;
+		}
+		printf("Sum = %f\n", sum);//shows the rusult of the summation
+	} while (k >= 0);// this operation only works if input is greater or equal to 0
+
+
+	return 0;
+}
+
+
+
+
+//palindrome checker
+
+#include <stdio.h>
+int main() {
+
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	int i, a;
+
+	printf("input an interger\n");
+
+	scanf("%i", &i);
+
+	a = i;//needed later when it need to judge whether if it is pandrome
+
+	int number = 0, reversed = 0;
+
+	for (; i != 0;) {//compute untill the first digit is reached
+		number = i % 10;//in order to find the remainder as first digit of the number
+		reversed = reversed * 10 + number;//add the numbers backwards through the remainder to make up a reversed number
+		i = i / 10;//compue untill the first digit of the number
+	}
+
+	if (a == reversed) {//judge if the 2 value is equal
+		printf("It is palindrome,reversed:%i,input number is %i", reversed, a);
+
+	}
+	else {//in other circumstances when it is not equal
+		printf("It is not a palindrome, reversed:%i,input number is %i", reversed, a);
+
+	}
+
+	return 0;
+}
+
+
+
+
+//approximate sin (x)
+
+#include <stdio.h>
+
+int main() {
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	int k;// it is the coefficient k in the formula
+	double d, r;//represent the degree and radian
+
+	printf("enter an integer for terms\n");
+	scanf("%i", &k);
+	printf("enter angle in degrees\n");
+	scanf("%lf", &d);
+
+	r = d * 3.14 / 180;//formula for converting degree to radian
+	double denom, x, equation = 0;
+
+	int ini = 0, fin;//represent the initial and final values for outer and inner loop
+
+	do {
+
+		denom = 1;
+		x = 1;
+
+		for (fin = 1; fin <= 2 * ini + 1; fin++) {//the sequence of the odd numbers
+			denom *= fin;//start of the denominator calculation
+			x *= r;//calculation of x in the power form
+		}
+
+		ini++;
+
+		if (ini % 2 == 1) {//methods for determining the k whether if it is odd or even
+			equation += 1 / denom * x;//the equation for sin if it is odd
+		}
+
+		else {
+			equation += -1 / denom * x;//the equation for sin if it is even
+		}
+	} while (ini <= k);
+
+
+	printf("Sin(%lf) at the %d term is %f", d, k, equation);
+	return 0;
+}
+
+
+
+
+//building numeric piramida
+
+#include <stdio.h>
+
+int main() {
+  
+  int i , j , k;
+
+do {//run the following program over and over again
+  
+  printf("input an integer\n");
+  scanf("%i",&k);//assign the value of k as an input
+  
+  if (k>0){
+    
+    for(i = 1;i <= k;i++){//the row will increase from 1 till k
+
+      for(j = 1;j <= i;j++){/*the column will increase no larger than the number  i */ 
+        printf("%i",j);/*output will be shown through the computation of j*/
+
+      }
+
+      printf("\n");//put to the next line between row numbers
+
+    }
+
+  }else{
+    printf("input only positive integer");/*program will end if input is less or equal to 0*/
+  }
+
+  } while (k>0);/*this process goes along as long as the input is larger than 0*/
+
+  return 0;
+}
